@@ -1,0 +1,118 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{enumerate} 
+\usepackage{hyperref}
+\hypersetup{
+colorlinks=true,
+urlcolor=blue
+}
+ 
+\newenvironment{task}[2][Task]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+ 
+\begin{document}
+ 
+\title{ROS Primer}
+\author{Author: Sterling McLeod}
+\maketitle
+
+\subsection*{Introduction}
+
+The purpose of this assignment is for you to become familiar with the Robot Operating System (ROS) framework. You will go through basic ROS concepts and implement two very useful features of the framework, publishing and subscribing. All ROS packages must be located in a ROS workspace. The workspace allows you to compile many ROS packages with one command and makes locating packages with command-line tools much easier. The build command for each ROS package is configured using the cmake tool - each package has a corresponding CMakeLists.txt file that you will need to edit to build the package. After successfully building and running a "Hello World" ROS program (also called a ROS node), you will implement nodes that communicate with each other using the Publish/Subscribe pattern of communication. 
+
+\subsection*{System Info}
+\emph{Operating System, ROS Version}: Ubuntu 14.04, Indigo\\
+\emph{Hardware needed}: None
+ 
+\subsection*{Supplemental Material}
+
+Visit \href{http://wiki.ros.org/ROS/Tutorials}{http://wiki.ros.org/ROS/Tutorials} for a list of tutorials on ROS. For this assignment, the following tutorials will be most relevant:
+
+\begin{enumerate}
+\item Installing and Configuring Your ROS Environment
+\item Creating a ROS Package
+\item Building a ROS package
+\item Understanding ROS Nodes
+\item Understanding ROS Topics
+\item Writing a Simple Publisher and Subscriber (C++)
+\item Writing a Simple Publisher and Subscriber (Python)
+\end{enumerate}
+
+\subsection*{Tasks}
+
+\begin{task}{1. Create a ROS workspace}
+\end{task}
+The workspace should be in the user's home directory.
+
+
+\begin{task}{2. Create a ROS package in your ROS workspace}
+\end{task}
+
+\begin{enumerate}
+\item Name the package "ros\_practice"
+\item Edit the CMakeLists.txt and package.xml files for ros\_practice to add the following dependencies:
+\begin{enumerate}
+\item roscpp
+\item rospy
+\item std\_msgs
+\item nav\_msgs
+\end{enumerate}
+
+\item Create a main.cpp file that does the following:
+\begin{enumerate}
+\item Creates a ROS node titled "Test Node"
+\item Prints "Hello World!" to the console
+\end{enumerate}
+
+\item Edit CMakeLists.txt to compile your main.cpp into an executable named "my\_first\_node"
+
+\item Compile your ROS node
+\item Run your ROS node using the \emph{rosrun} command
+\end{enumerate}
+
+\begin{task}
+{3. Create three nodes that publish and subscribe messages}
+\end{task}
+
+\begin{enumerate}
+\item Name the nodes "node\_a", "node\_b", and "node\_c"
+
+\item "node\_a":
+\begin{enumerate}
+\item Publishes: std\_msgs/String msg on topic "topic\_a"
+\item Subscribes: "topic\_b"
+\end{enumerate}
+
+\item "node\_b":
+\begin{enumerate}
+\item Publishes: std\_msgs/String msg on topic "topic\_b"
+\item Subscribes: "topic\_a"
+\end{enumerate}
+
+\item "node\_c":
+\begin{enumerate}
+\item Publishes: 
+\item Subscribes: "topic\_a", "topicb"
+\end{enumerate}
+
+
+\item The callback functions for each Subscriber should print:
+\begin{enumerate}
+\item Topic name
+\item Msg value
+\end{enumerate}
+
+
+\item Run all three nodes simultaneously 
+
+\item Run "rqt\_graph" and save a copy of the graph (screenshot or image icon in top-right)
+
+
+\end{enumerate}
+ 
+ 
+ 
+ 
+\end{document}
