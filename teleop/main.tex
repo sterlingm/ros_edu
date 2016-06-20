@@ -1,0 +1,96 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{enumerate} 
+\usepackage{hyperref}
+\hypersetup{
+colorlinks=true,
+urlcolor=blue
+}
+ 
+\newenvironment{task}[2][Task]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+ 
+\begin{document}
+ 
+\title{Turtlebot Tele-operation}
+\author{Author: Sterling McLeod}
+\maketitle
+
+\subsection*{Introduction}
+
+The assignment will train you to move the Turtlebot 2 platform via velocity commands. First, you will start processes on the Turtlebot by using a \emph{launch} file. After the Turtlebot has been started, you will publish a specific msg, \emph{geometry\_msgs/Twist}, to drive the robot. Lastly, you will design a basic keyboard interface for a user to operate the Turtlebot through a keyboard. By doing all of this, you will become more familiar with publishing and subscribing messages and how to structure a ROS node. To complete this assignment, you should already be familiar with creating a ROS package, building a ROS node, and how to publish and subscribe to messages.
+
+
+
+\subsection*{System Info}
+\emph{Operating System, ROS Version}: Ubuntu 14.04, Indigo
+
+\subsection*{Supplemental Material}
+
+Visit \href{http://wiki.ros.org/ROS/Tutorials}{http://wiki.ros.org/ROS/Tutorials} for a list of tutorials on ROS. For this assignment, the following tutorials will be most relevant:
+
+\begin{enumerate}
+\item Understanding ROS Nodes
+\item Understanding ROS Topics
+\item Creating a ROS msg and srv
+\item Writing a Simple Publisher and Subscriber (C++), Writing a Simple Publisher and Subscriber (Python)
+\item Using rqt\_console and roslaunch
+\end{enumerate}
+
+\subsection*{Tasks}
+
+\begin{task}{1. Run and observe the keyboard tele-operation provided by ROS.}
+\end{task}
+\begin{enumerate}
+\item Change permissions on the interface between the robot and computer: "sudo chmod 777 /dev/ttyUSB0"
+\item Run the "minimal.launch" file in the package turtlebot\_bringup
+\item Drive the robot around with the keyboard interface.
+\end{enumerate}
+
+
+\begin{task}{2. Create a ROS package implementing keyboard tele-operation}
+\end{task}
+
+\begin{enumerate}
+\item Accept keyboard commands for the following:
+	\begin{enumerate}
+	\item Move forward or backwards for X number of seconds at a fixed speed
+	
+		\begin{enumerate}
+		\item Limit the time to 2 seconds
+		\end{enumerate}
+	
+	\item Move forward or backwards X distance
+	
+		\begin{enumerate}
+		\item Limit the distance to 0.33m
+		\end{enumerate}
+		
+	\item Turn 90 degrees clockwise and counter-clockwise
+	
+	\item Turn X degrees
+	
+		\begin{enumerate}
+		\item Limit to 90 degrees
+		\end{enumerate}
+		
+	\item Change the linear and angular velocities of the robot
+		\begin{enumerate}
+		\item Limit the linear velocity to $0.33\frac{m}{s}$ and angular velocity to $0.52\frac{rad}{s}$.
+		\end{enumerate}
+		
+	\item The keys used for tele-operation do not need to match the keys used in the keyboard\_teleop.launch file.
+	\item The robot does not need to stop smoothly.
+	\end{enumerate}
+	
+	\item Create a launch file to run all nodes necessary for your keyboard tele-operation node.
+	
+	\item Run \emph{rqt\_graph} with your launch file running and save an image of it (there's an icon in the top-right of the window for this).
+	
+	\item Create a README file explaining how to run your code.
+	
+\end{enumerate}
+ 
+\end{document}
