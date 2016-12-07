@@ -24,7 +24,7 @@ The purpose of this assignment is for you to become familiar with the Robot Oper
 
 \subsection*{System Info}
 \emph{Operating System, ROS Version}: Ubuntu 14.04, Indigo\\
-\emph{Hardware needed}: None
+\emph{Extra Hardware needed}: None
  
 \subsection*{Supplemental Material}
 
@@ -72,12 +72,24 @@ The workspace should be in the user's home directory.
 \item Run your ROS node using the \emph{rosrun} command
 \end{enumerate}
 
+
 \begin{task}
-{3. Create three nodes that publish and subscribe messages}
+{3. Create a custom msg in your ROS package}
+\end{task}
+\begin{enumerate}
+\item The name of the msg should be MyMsg.msg. It should contain the following attributes:
+	\begin{enumerate}
+	\item ID - integer value unique to each MyMsg
+	\item message - String value containing a word or sentence, e.g. "hey this is a MyMsg"
+	\end{enumerate}
+\end{enumerate}
+
+\begin{task}
+{4. Create two nodes that publish and subscribe messages}
 \end{task}
 
 \begin{enumerate}
-\item Name the nodes "node\_a", "node\_b", and "node\_c"
+\item Name the nodes "node\_a" and "node\_b".
 
 \item "node\_a":
 \begin{enumerate}
@@ -87,32 +99,20 @@ The workspace should be in the user's home directory.
 
 \item "node\_b":
 \begin{enumerate}
-\item Publishes: std\_msgs/String msg on topic "topic\_b"
+\item Publishes: ros\_practice/MyMsg msg on topic "topic\_b"
 \item Subscribes: "topic\_a"
 \end{enumerate}
 
-\item "node\_c":
-\begin{enumerate}
-\item Publishes: 
-\item Subscribes: "topic\_a", "topicb"
-\end{enumerate}
+\item The callback function for each Subscriber should print the topic name and all attributes of a msg
 
-
-\item The callback functions for each Subscriber should print:
-\begin{enumerate}
-\item Topic name
-\item Msg value
-\end{enumerate}
-
-
-\item Run all three nodes simultaneously 
+\item Run both nodes simultaneously 
 
 \item Run "rqt\_graph" and save a copy of the graph (screenshot or image icon in top-right)
-
-
 \end{enumerate}
  
- 
- 
+\subsection*{Helpful commands}
+Use the \textbf{\emph{rostopic}} command to help you debug these nodes.\\
+\textbf{\emph{rostopic list}} - Displays all topics currently running on the network\\
+\textbf{\emph{rostopic echo *topic\_name*}} - Displays the msgs being published on a topic. Example: \emph{rostopic echo topic\_a}
  
 \end{document}
